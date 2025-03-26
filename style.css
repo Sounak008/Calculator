@@ -1,3 +1,4 @@
+/* General body styling */
 body {
     height: 100vh;
     width: 100vw;
@@ -10,6 +11,7 @@ body {
     font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
+/* Main container for the calculator */
 .main-box {
     display: flex;
     justify-content: center;
@@ -23,6 +25,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
+/* Calculator heading styling */
 .heading {
     color: #8d86c9;
     margin-bottom: 15px;
@@ -33,6 +36,7 @@ body {
     text-transform: uppercase;
 }
 
+/* Input box container */
 .input-box {
     width: 100%;
     margin-bottom: 15px;
@@ -42,22 +46,24 @@ body {
     border: 2px inset #1E1F24;
 }
 
+/* Calculator display styling */
 #calculator-display {
-    width: 100%; /* Ensure it takes the full width of its container */
-    padding: 12px; /* Adjust padding for better spacing */
+    width: 100%;
+    padding: 12px;
     font-size: 1.5rem;
     text-align: right;
-    background-color: #8BAC0F; /* Classic Game Boy screen color */
-    color: #0F380F; /* Classic Game Boy "pixel" color */
+    background-color: #8BAC0F;
+    color: #0F380F;
     border: none;
     border-radius: 4px;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
     font-family: 'Digital-7', 'DSEG14 Classic', 'Segment7', monospace;
     letter-spacing: 2px;
-    box-sizing: border-box; /* Include padding in the width calculation */
-    margin: 0 auto; /* Center the display box horizontally */
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
+/* Calculator buttons container */
 .calculator-buttons {
     display: flex;
     flex-direction: column;
@@ -65,12 +71,14 @@ body {
     width: 100%;
 }
 
+/* Row styling for buttons */
 .row {
     display: flex;
     justify-content: space-between;
     gap: 8px;
 }
 
+/* General button styling */
 button {
     flex: 1;
     padding: 15px 10px;
@@ -93,12 +101,14 @@ button {
     top: 0;
 }
 
+/* Button hover effect */
 button:hover {
     background-color: #5A5B60;
     top: -2px;
     box-shadow: 0 6px 0 #232428;
 }
 
+/* Button active effect */
 button:active {
     top: 4px;
     box-shadow: 0 0 0 #232428;
@@ -107,7 +117,7 @@ button:active {
     transition: all 0.02s step-end;
 }
 
-/* Operator buttons */
+/* Operator buttons styling */
 button:nth-child(4) {
     background-color: #7D2944;
     box-shadow: 0 4px 0 #2f102a;
@@ -123,7 +133,7 @@ button:nth-child(4):active {
     box-shadow: 0 0 0 #2f102a;
 }
 
-/* Equal button */
+/* Equal button styling */
 .row:nth-child(4) button:nth-child(3) {
     background-color: #2F5470;
     box-shadow: 0 4px 0 #152233;
@@ -139,7 +149,7 @@ button:nth-child(4):active {
     box-shadow: 0 0 0 #152233;
 }
 
-/* Clear button */
+/* Clear button styling */
 #clear-button {
     background-color: #743030;
     box-shadow: 0 4px 0 #361616;
