@@ -17,7 +17,7 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-  if (num2 === 0) return 'Cannot divide by zero';
+  if (num2 === 0) return 'Nahh bruh..really?';
   let value = (num1 / num2);
   return value.toFixed(4);
 }
@@ -57,15 +57,12 @@ window.onload = function () {
 const digitButtons = document.querySelectorAll('.calculator-buttons button');
 
 digitButtons.forEach((button) => {
-  // Handle digit and decimal point buttons
   if (!isNaN(button.textContent) || button.textContent === '.') {
     button.addEventListener('click', () => {
-      // Replace display value if reset is needed or if it's the default "0"
       if (shouldResetDisplay || displayValue === '0') {
         displayValue = button.textContent;
         shouldResetDisplay = false;
       } else {
-        // Prevent multiple decimal points
         if (button.textContent === '.' && displayValue.includes('.')) {
           button.disabled = true;
           button.style.pointerEvents = 'none';
@@ -76,11 +73,8 @@ digitButtons.forEach((button) => {
           displayValue += button.textContent;
         }
       }
-
       updateDisplay();
     });
-
-  // Handle operator buttons (+, -, *, /)
   } else if (
     button.textContent === '+' ||
     button.textContent === '-' ||
@@ -88,8 +82,11 @@ digitButtons.forEach((button) => {
     button.textContent === '/'
   ) {
     button.addEventListener('click', () => {
-      // If an operation is already in progress, calculate the result
-      if (num1 !== undefined && operator !== undefined) {
+      if (operator && displayValue.endsWith(operator)) {
+        // Replace the last operator if consecutive operators are pressed
+        displayValue = displayValue.slice(0, -1) + button.textContent;
+      } else if (num1 !== undefined && operator !== undefined) {
+        // If an operation is already in progress, calculate the result
         const operatorIndex = displayValue.lastIndexOf(operator);
         num2 = parseFloat(displayValue.substring(operatorIndex + 1));
         const result = operate(num1, operator, num2);
@@ -107,17 +104,13 @@ digitButtons.forEach((button) => {
       shouldResetDisplay = false;
       updateDisplay();
     });
-
-  // Handle equals button (=)
   } else if (button.textContent === '=') {
     button.addEventListener('click', () => {
-      // Perform the calculation if an operation is in progress
       if (num1 !== undefined && operator !== undefined) {
         const operatorIndex = displayValue.lastIndexOf(operator);
         num2 = parseFloat(displayValue.substring(operatorIndex + 1));
         const result = operate(num1, operator, num2);
 
-        // Update display with the result and reset for a new calculation
         displayValue = result.toString();
         num1 = undefined;
         operator = undefined;
@@ -125,11 +118,8 @@ digitButtons.forEach((button) => {
         updateDisplay();
       }
     });
-
-  // Handle clear button (C)
   } else if (button.id === 'clear-button') {
     button.addEventListener('click', () => {
-      // Reset all values to their initial state
       displayValue = '0';
       num1 = undefined;
       num2 = undefined;
@@ -137,7 +127,6 @@ digitButtons.forEach((button) => {
       shouldResetDisplay = false;
       updateDisplay();
 
-      // Re-enable the decimal button if it was disabled
       const decimalButton = Array.from(digitButtons).find(
         (btn) => btn.textContent === '.'
       );
