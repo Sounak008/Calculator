@@ -1,0 +1,159 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+.main-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #2E3037;
+    padding: 20px;
+    border-radius: 12px;
+    border: 3px solid #232428;
+    width: 320px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.heading {
+    color: #8d86c9;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    font-family: 'Press Start 2P', 'VT323', monospace;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.input-box {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #373941;
+    border-radius: 10px;
+    border: 2px inset #1E1F24;
+}
+
+#calculator-display {
+    width: 100%; /* Ensure it takes the full width of its container */
+    padding: 12px; /* Adjust padding for better spacing */
+    font-size: 1.5rem;
+    text-align: right;
+    background-color: #8BAC0F; /* Classic Game Boy screen color */
+    color: #0F380F; /* Classic Game Boy "pixel" color */
+    border: none;
+    border-radius: 4px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Digital-7', 'DSEG14 Classic', 'Segment7', monospace;
+    letter-spacing: 2px;
+    box-sizing: border-box; /* Include padding in the width calculation */
+    margin: 0 auto; /* Center the display box horizontally */
+}
+
+.calculator-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+button {
+    flex: 1;
+    padding: 15px 10px;
+    font-size: 1.2rem;
+    border: 2px solid #232428;
+    border-radius: 4px;
+    background-color: #4A4B50;
+    box-shadow: 0 4px 0 #232428;
+    color: #DCD5F2;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'VT323', 'Press Start 2P', monospace;
+    transition: all 0.05s step-end;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 0;
+}
+
+button:hover {
+    background-color: #5A5B60;
+    top: -2px;
+    box-shadow: 0 6px 0 #232428;
+}
+
+button:active {
+    top: 4px;
+    box-shadow: 0 0 0 #232428;
+    transform: translateY(0);
+    background-color: #3A3B40;
+    transition: all 0.02s step-end;
+}
+
+/* Operator buttons */
+button:nth-child(4) {
+    background-color: #7D2944;
+    box-shadow: 0 4px 0 #2f102a;
+    color: #FFD0DD;
+}
+
+button:nth-child(4):hover {
+    background-color: #8D3954;
+    box-shadow: 0 6px 0 #2f102a;
+}
+
+button:nth-child(4):active {
+    box-shadow: 0 0 0 #2f102a;
+}
+
+/* Equal button */
+.row:nth-child(4) button:nth-child(3) {
+    background-color: #2F5470;
+    box-shadow: 0 4px 0 #152233;
+    color: #BFE3FF;
+}
+
+.row:nth-child(4) button:nth-child(3):hover {
+    background-color: #3F6480;
+    box-shadow: 0 6px 0 #152233;
+}
+
+.row:nth-child(4) button:nth-child(3):active {
+    box-shadow: 0 0 0 #152233;
+}
+
+/* Clear button */
+#clear-button {
+    background-color: #743030;
+    box-shadow: 0 4px 0 #361616;
+    color: #FFCFCF;
+    width: 100%;
+    border-radius: 4px;
+    height: auto;
+}
+
+#clear-button:hover {
+    background-color: #8A4040;
+    box-shadow: 0 6px 0 #361616;
+}
+
+#clear-button:active {
+    box-shadow: 0 0 0 #361616;
+}
