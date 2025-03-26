@@ -2,20 +2,24 @@ let num1, num2, operator;
 
 // Basic arithmetic functions
 function add(num1, num2) {
-  return num1 + num2;
+  let value = (num1 + num2);
+  return value.toFixed(4);
 }
 
 function subtract(num1, num2) {
-  return num1 - num2;
+  let value = (num1 - num2);
+  return value.toFixed(4);
 }
 
 function multiply(num1, num2) {
-  return num1 * num2;
+  let value = (num1 * num2);
+  return value.toFixed(4);
 }
 
 function divide(num1, num2) {
   if (num2 === 0) return 'Cannot divide by zero';
-  return num1 / num2;
+  let value = (num1 / num2);
+  return value.toFixed(4);
 }
 
 // Function to perform the operation based on the operator
