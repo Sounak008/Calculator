@@ -76,6 +76,7 @@ body {
     display: flex;
     justify-content: space-between;
     gap: 8px;
+    width: 100%;
 }
 
 /* General button styling */
@@ -150,20 +151,52 @@ button:nth-child(4):active {
 }
 
 /* Clear button styling */
+/* Clear and Backspace button container */
+.clear {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8px; /* Match the gap in other rows */
+}
+
+/* Make both buttons take equal space */
+.clear button {
+    flex: 1;
+}
+
+/* Clear button */
 #clear-button {
     background-color: #743030;
     box-shadow: 0 4px 0 #361616;
-    color: #FFCFCF;
-    width: 100%;
     border-radius: 4px;
-    height: auto;
 }
 
+/* Clear button hover effects */
 #clear-button:hover {
     background-color: #8A4040;
     box-shadow: 0 6px 0 #361616;
 }
 
+/* Clear button active effects */
 #clear-button:active {
+    box-shadow: 0 0 0 #361616;
+}
+
+/* Backspace button */
+#backspace-button {
+    background-color: #743030;
+    box-shadow: 0 4px 0 #361616;
+    border-radius: 4px;
+    padding-inline: 76px;
+}
+
+/* Backspace button hover effects */
+#backspace-button:hover {
+    background-color: #8A4040;
+    box-shadow: 0 6px 0 #361616;
+}
+
+/* Backspace button active effects */
+#backspace-button:active {
     box-shadow: 0 0 0 #361616;
 }
