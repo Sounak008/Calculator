@@ -1,8 +1,5 @@
 let num1, num2, operator;
 
-// Basic math operations for calculator
-// Each function handles a specific operation and rounds to 4 decimal places
-// Returns a number, not a string, to allow for chained operations
 function add(num1, num2) {
   return Number((num1 + num2).toFixed(4));
 }
@@ -20,9 +17,6 @@ function divide(num1, num2) {
   return Number((num1 / num2).toFixed(4));
 }
 
-// Takes two numbers and an operator, then performs the calculation
-// Acts as a router to the appropriate math function based on operator
-// Returns the result of the operation (number or error message)
 function operate(num1, operator, num2) {
   switch (operator) {
     case '+':
@@ -38,32 +32,70 @@ function operate(num1, operator, num2) {
   }
 }
 
-// Display management variables
-// Tracks what's shown on screen and whether it should reset on next input
-// Used throughout the calculator logic to control the UI
+function inputValue() {
+  let input = document.getElementById("calculator-display").value;
+  return input;
+}
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    let input = inputValue();
+    try {
+      if (!/^[0-9+\-*/.]+$/.test(input)) {
+      throw new Error("Invalid characters in input");
+      }
+
+      let result = null;
+      let currentNumber = '';
+      let currentOperator = null;
+
+      for (let i = 0; i < input.length; i++) {
+      const char = input[i];
+
+      if (['+', '-', '*', '/'].includes(char)) {
+        if (currentNumber !== '') {
+        if (result === null) {
+          result = parseFloat(currentNumber);
+        } else if (currentOperator) {
+          result = operate(result, currentOperator, parseFloat(currentNumber));
+        }
+        currentNumber = '';
+        }
+        currentOperator = char;
+      } else {
+        currentNumber += char;
+      }
+      }
+
+      if (currentNumber !== '') {
+      if (result === null) {
+        result = parseFloat(currentNumber);
+      } else if (currentOperator) {
+        result = operate(result, currentOperator, parseFloat(currentNumber));
+      }
+      }
+      document.getElementById("calculator-display").value = '';
+      displayValue = result.toString();
+      updateDisplay();
+    } catch (error) {
+      document.getElementById("calculator-display").value = '';
+      displayValue = "Error: Invalid input";
+      updateDisplay();
+    }
+  }
+});
+
+//Button stuff below:
+
 let displayValue = '0';
 const display = document.querySelector('#calculator-display');
 let shouldResetDisplay = false;
-
-// Updates the calculator display with current value
-// Called whenever the displayValue changes
 function updateDisplay() {
   display.value = displayValue;
 }
-
-// Initialize the display when page loads
-window.onload = function () {
-  updateDisplay();
-};
-
-// Get all buttons on the calculator for event handling
 const digitButtons = document.querySelectorAll('.calculator-buttons button');
 
-// Add event listeners to each button on the calculator
-// Different handling based on button type (number, operator, equals, clear)
 digitButtons.forEach((button) => {
-  // Number and decimal point button handler
-  // Handles appending digits and ensuring proper decimal point usage
   if (!isNaN(button.textContent) || button.textContent === '.') {
     button.addEventListener('click', () => {
       if (displayValue === '0' || shouldResetDisplay) {
@@ -87,10 +119,7 @@ digitButtons.forEach((button) => {
       }
       updateDisplay();
     });
-  }
-  // Operator button handler (+, -, *, /)
-  // Adds operator to the display or replaces last operator if needed
-  else if (
+  } else if (
     button.textContent === '+' ||
     button.textContent === '-' ||
     button.textContent === '*' ||
@@ -109,10 +138,7 @@ digitButtons.forEach((button) => {
       shouldResetDisplay = false;
       updateDisplay();
     });
-  }
-  // Equals button handler
-  // Evaluates the expression when pressed and displays the result
-  else if (button.textContent === '=') {
+  } else if (button.textContent === '=') {
     button.addEventListener('click', () => {
       try {
         let expression = displayValue;
@@ -135,10 +161,7 @@ digitButtons.forEach((button) => {
         updateDisplay();
       }
     });
-  }
-  // Clear button handler
-  // Resets the calculator to initial state
-  else if (button.id === 'clear-button') {
+  } else if (button.id === 'clear-button') {
     button.addEventListener('click', () => {
       displayValue = '0';
       num1 = undefined;
@@ -147,23 +170,23 @@ digitButtons.forEach((button) => {
       shouldResetDisplay = false;
       updateDisplay();
     });
+  } else if (button.id === 'backspace-button') {
+    button.addEventListener('click', () => {
+      displayValue = displayValue.slice(0, -1);
+      updateDisplay();
+    });
   }
 });
 
-// Parses a string expression and calculates the result
-// Handles multi-operation expressions like "2+3*4"
-// Returns the final calculated value
 function evaluateExpression(expression) {
   const tokens = [];
   let currentNumber = '';
   
-  // Handle negative numbers at the beginning of expression
   if (expression.startsWith('-')) {
     currentNumber = '-';
     expression = expression.substring(1);
   }
   
-  // Tokenize the expression into numbers and operators
   for (let i = 0; i < expression.length; i++) {
     const char = expression[i];
     
@@ -178,13 +201,10 @@ function evaluateExpression(expression) {
     }
   }
   
-  // Add the last number if there is one
   if (currentNumber !== '') {
     tokens.push(parseFloat(currentNumber));
   }
   
-  // Calculate the result from left to right
-  // This performs operations in order, not applying standard precedence
   let result = tokens[0];
   let currentOperator = null;
   
