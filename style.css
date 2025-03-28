@@ -1,4 +1,3 @@
-/* General body styling */
 body {
     height: 100vh;
     width: 100vw;
@@ -11,7 +10,6 @@ body {
     font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
-/* Main container for the calculator */
 .main-box {
     display: flex;
     justify-content: center;
@@ -25,7 +23,6 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Calculator heading styling */
 .heading {
     color: #8d86c9;
     margin-bottom: 15px;
@@ -36,7 +33,6 @@ body {
     text-transform: uppercase;
 }
 
-/* Input box container */
 .input-box {
     width: 100%;
     margin-bottom: 15px;
@@ -46,7 +42,6 @@ body {
     border: 2px inset #1E1F24;
 }
 
-/* Calculator display styling */
 #calculator-display {
     width: 100%;
     padding: 12px;
@@ -63,7 +58,6 @@ body {
     margin: 0 auto;
 }
 
-/* Calculator buttons container */
 .calculator-buttons {
     display: flex;
     flex-direction: column;
@@ -71,7 +65,6 @@ body {
     width: 100%;
 }
 
-/* Row styling for buttons */
 .row {
     display: flex;
     justify-content: space-between;
@@ -79,7 +72,6 @@ body {
     width: 100%;
 }
 
-/* General button styling */
 button {
     flex: 1;
     padding: 15px 10px;
@@ -102,14 +94,12 @@ button {
     top: 0;
 }
 
-/* Button hover effect */
 button:hover {
     background-color: #5A5B60;
     top: -2px;
     box-shadow: 0 6px 0 #232428;
 }
 
-/* Button active effect */
 button:active {
     top: 4px;
     box-shadow: 0 0 0 #232428;
@@ -118,7 +108,6 @@ button:active {
     transition: all 0.02s step-end;
 }
 
-/* Operator buttons styling */
 button:nth-child(4) {
     background-color: #7D2944;
     box-shadow: 0 4px 0 #2f102a;
@@ -134,7 +123,6 @@ button:nth-child(4):active {
     box-shadow: 0 0 0 #2f102a;
 }
 
-/* Equal button styling */
 .row:nth-child(4) button:nth-child(3) {
     background-color: #2F5470;
     box-shadow: 0 4px 0 #152233;
@@ -150,39 +138,32 @@ button:nth-child(4):active {
     box-shadow: 0 0 0 #152233;
 }
 
-/* Clear button styling */
-/* Clear and Backspace button container */
 .clear {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    gap: 8px; /* Match the gap in other rows */
+    gap: 8px;
 }
 
-/* Make both buttons take equal space */
 .clear button {
     flex: 1;
 }
 
-/* Clear button */
 #clear-button {
     background-color: #743030;
     box-shadow: 0 4px 0 #361616;
     border-radius: 4px;
 }
 
-/* Clear button hover effects */
 #clear-button:hover {
     background-color: #8A4040;
     box-shadow: 0 6px 0 #361616;
 }
 
-/* Clear button active effects */
 #clear-button:active {
     box-shadow: 0 0 0 #361616;
 }
 
-/* Backspace button */
 #backspace-button {
     background-color: #743030;
     box-shadow: 0 4px 0 #361616;
@@ -190,13 +171,11 @@ button:nth-child(4):active {
     padding-inline: 76px;
 }
 
-/* Backspace button hover effects */
 #backspace-button:hover {
     background-color: #8A4040;
     box-shadow: 0 6px 0 #361616;
 }
 
-/* Backspace button active effects */
 #backspace-button:active {
     box-shadow: 0 0 0 #361616;
 }
